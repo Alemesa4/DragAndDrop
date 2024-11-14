@@ -1,0 +1,86 @@
+.Body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+    flex-direction: row;
+    gap : 50px;
+
+}
+
+.frutas {
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 2px blue solid;
+    padding: 50px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.frutas h2 {
+    position: relative;
+    top: -60px;
+}
+
+.animales {
+    background-color: antiquewhite;
+
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 2px green solid;
+    padding: 50px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+
+}
+
+.animales h2 {
+    position: relative;
+    top: -60px;
+}
+
+.colores {
+    background-color: antiquewhite;
+
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 2px red solid;
+    padding: 50px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+
+}
+
+.colores h2 {
+    position: relative;
+    top: -60px;
+}
+
+.boton{
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    border: 1px solid blue;
+    padding:5px;
+}
+.boton:hover{
+    background-color: lightblue;
+    cursor: pointer;
+    border: 2px solid lightblue;
+}
+.divpalabras{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+ background-color: turquoise;
+ padding: 30px;
+ border-radius: 15px;
+}
+.palabras{
+text-align: center;
+background-color: aliceblue;
+padding: 5px;
+border-radius: 10px;
+}
