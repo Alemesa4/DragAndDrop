@@ -17,6 +17,7 @@
     border: 2px blue solid;
     padding: 50px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    gap: 15px;
 }
 
 .frutas h2 {
@@ -26,14 +27,13 @@
 
 .animales {
     background-color: antiquewhite;
-
     display: flex;
     flex-direction: column;
     border-radius: 5px;
     border: 2px green solid;
     padding: 50px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-
+    gap: 15px;
 }
 
 .animales h2 {
@@ -43,14 +43,13 @@
 
 .colores {
     background-color: antiquewhite;
-
     display: flex;
     flex-direction: column;
     border-radius: 5px;
     border: 2px red solid;
     padding: 50px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-
+    gap: 15px;
 }
 
 .colores h2 {

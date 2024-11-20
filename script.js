@@ -6,6 +6,11 @@ animales.classList.add("animales");
 const colores = document.createElement("div");
 colores.classList.add("colores");
 const palabras = ["Perro", "Gato", "Periquito", "Rojo", "Platano", "Manzana", "Naranja", "Pera", "Pez", "Cerdo"];
+const categoriasCorrectas = {
+    "Frutas": ["Platano", "Manzana", "Naranja", "Pera"],
+    "Animales": ["Perro", "Gato", "Periquito", "Pez", "Cerdo"],
+    "Colores": ["Rojo"]
+};
 const boton = document.createElement("button");
 boton.innerText = "Validar";
 boton.classList.add("boton");
@@ -14,6 +19,7 @@ const tituloanimales = document.createElement("h2");
 const titulocolores = document.createElement("h2");
 const divpalabras = document.createElement("div");
 divpalabras.classList.add("divpalabras");
+
 palabras.forEach(palabra => {
     const palabraspan = document.createElement("span");
     palabraspan.innerText = palabra;
@@ -37,21 +43,15 @@ Body.appendChild(divpalabras);
 
 document.querySelectorAll(".palabras").forEach(palabra => {
     palabra.addEventListener("dragstart", dragstart);
-    palabra.addEventListener("dragend", dragend);
-    frutas.addEventListener("dragover", dragover);
-    frutas.addEventListener("drop", drop);
-    animales.addEventListener("dragover", dragover);
-    animales.addEventListener("drop", drop);
-    colores.addEventListener("dragover", dragover);
-    colores.addEventListener("drop", drop);
+});
+
+[frutas, animales, colores].forEach(categoria => {
+    categoria.addEventListener("dragover", dragover);
+    categoria.addEventListener("drop", drop);
 });
 
 function dragstart(event) {
     event.dataTransfer.setData("text", event.target.innerText);
-}
-
-function dragend(event) {
-    event.target.style.visibility = "hidden";
 }
 
 function dragover(event) {
@@ -61,10 +61,38 @@ function dragover(event) {
 function drop(event) {
     event.preventDefault();
     const data = event.dataTransfer.getData("text");
-    const targetDiv = event.target.closest("div");
-    if (targetDiv) {
-        targetDiv.appendChild(document.querySelector(`.palabras:contains(${data})`));
-        document.querySelector(`.palabras:contains(${data})`).style.visibility = "";
+    const palabra = Array.from(document.querySelectorAll(".palabras"))
+        .find(el => el.innerText === data);
+    if (palabra) {
+        event.currentTarget.appendChild(palabra);
     }
 }
 
+boton.addEventListener("click", validar);
+
+function validar() {
+    let correctas = 0;
+    let total = palabras.length;
+
+    document.querySelectorAll(".palabras").forEach(palabra => {
+        palabra.style.color = "black";
+    });
+
+    [frutas, animales, colores].forEach(categoria => {
+        const categoriaNombre = categoria.querySelector("h2").innerText;
+        const palabrasEnCategoria = Array.from(categoria.querySelectorAll(".palabras"));
+        palabrasEnCategoria.forEach(palabra => {
+            if (categoriasCorrectas[categoriaNombre].includes(palabra.innerText)) {
+                palabra.style.color = "green";
+                correctas++;
+            } else {
+                palabra.style.color = "red";
+            }
+        });
+    });
+
+    if (correctas === total) {
+        alert("¡Felicidades! Todas las palabras están clasificadas correctamente.");
+    } else {
+    }
+}
